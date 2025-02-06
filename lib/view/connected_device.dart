@@ -1,6 +1,6 @@
 import 'package:blutetooth_task/controller/bluetooth_data.dart';
+import 'package:blutetooth_task/view/available_device.dart';
 import 'package:blutetooth_task/view/data_sending.dart';
-import 'package:blutetooth_task/view/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -64,12 +64,20 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
-                      return DataSendingProtocol(
-                        name: widget.selectedName,
-                      );
-                    }));
+                    if (password.text.trim().isNotEmpty) {
+                      Provider.of<BluetoothData>(context, listen: false)
+                          .password = password.text;
+
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (context) {
+                        return DataSendingProtocol(
+                          name: widget.selectedName,
+                        );
+                      }));
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                          SnackBar(content: Text("Please Set Password")));
+                    }
                     Provider.of<BluetoothData>(context, listen: false)
                         .password = password.text;
                   },
@@ -93,7 +101,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                 GestureDetector(
                   onTap: () {
                     Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) {
+                        .pushReplacement(MaterialPageRoute(builder: (context) {
                       return const HomePage();
                     }));
                   },

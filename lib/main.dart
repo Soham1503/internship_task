@@ -1,5 +1,5 @@
 import 'package:blutetooth_task/controller/bluetooth_data.dart';
-import 'package:blutetooth_task/view/home_page.dart';
+import 'package:blutetooth_task/view/device_containers.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -13,12 +13,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) {
-          return BluetoothData(password: "");
-        },
-        child: const MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: HomePage(),
-        ));
+      create: (context) {
+        return BluetoothData(password: "");
+      },
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: DeviceContainers(),
+      ),
+    );
   }
 }

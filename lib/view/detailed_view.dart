@@ -1,5 +1,6 @@
+import 'package:blutetooth_task/view/available_device.dart';
 import 'package:blutetooth_task/view/connected_device.dart';
-import 'package:blutetooth_task/view/home_page.dart';
+import 'package:blutetooth_task/view/device_containers.dart';
 import 'package:flutter/material.dart';
 
 class DetailedView extends StatefulWidget {
@@ -63,7 +64,7 @@ class _DetailedViewState extends State<DetailedView> {
               GestureDetector(
                 onTap: () {
                   Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
+                      .pushReplacement(MaterialPageRoute(builder: (context) {
                     return const HomePage();
                   }));
                 },
@@ -87,7 +88,7 @@ class _DetailedViewState extends State<DetailedView> {
               GestureDetector(
                 onTap: () {
                   Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) {
+                      .pushReplacement(MaterialPageRoute(builder: (context) {
                     return ConnectedDevice(
                       selectedName: widget.name,
                     );

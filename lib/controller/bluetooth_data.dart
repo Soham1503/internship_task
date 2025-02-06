@@ -4,7 +4,5 @@ class BluetoothData extends ChangeNotifier {
   String password;
   BluetoothData({required this.password});
 
-  void changeData(){
-    
-  }
+  void changeData() {}
 }
