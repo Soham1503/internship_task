@@ -67,7 +67,7 @@ class _ConnectedDeviceState extends State<ConnectedDevice> {
                     Navigator.of(context)
                         .push(MaterialPageRoute(builder: (context) {
                       return DataSendingProtocol(
-                        name: "",
+                        name: widget.selectedName,
                       );
                     }));
                     Provider.of<BluetoothData>(context, listen: false)

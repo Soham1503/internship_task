@@ -89,7 +89,7 @@ class _DetailedViewState extends State<DetailedView> {
                   Navigator.of(context)
                       .push(MaterialPageRoute(builder: (context) {
                     return ConnectedDevice(
-                      selectedName: "",
+                      selectedName: widget.name,
                     );
                   }));
                 },
